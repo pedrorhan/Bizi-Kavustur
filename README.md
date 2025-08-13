@@ -1,6 +1,6 @@
-# 💕 İstanbul Macerası - Aşk Oyunu
+# 💕 Bizi Kavuştur - Aşk Oyunu
 
-Romantik bir İstanbul macerası oyunu! Her temayı tamamlayarak özel ödülleri keşfet ve sonunda kavuşma anını yaşa.
+Romantik bir kavuşma macerası oyunu! Her temayı tamamlayarak özel ödülleri keşfet ve sonunda kavuşma anını yaşa.
 
 ## 🎮 Oyun Özellikleri
 
@@ -25,7 +25,7 @@ Romantik bir İstanbul macerası oyunu! Her temayı tamamlayarak özel ödüller
 
 ## 🚀 Oyunu Oyna
 
-[Oyunu Oyna](https://[KULLANICI_ADINIZ].github.io/[REPO_ADINIZ])
+[Oyunu Oyna](https://pedrorhan.github.io/Bizi-Kavustur/)
 
 ## 💝 Özel Özellikler
 
