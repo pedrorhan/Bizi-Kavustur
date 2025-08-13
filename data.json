@@ -1,0 +1,173 @@
+{
+  "mapImage": "assets/map7.png",
+  "playerIcon": "assets/player.svg",
+  "maps": [
+    "assets/map1.png",
+    "assets/map2.png", 
+    "assets/map3.png",
+    "assets/map4.png",
+    "assets/map5.png",
+    "assets/map6.png",
+    "assets/map7.png",
+    "assets/map7.png"
+  ],
+  "kavusmaImage": "assets/kavusma.png",
+  "kavustukkImage": "assets/kavustukk.png",
+  "themes": [
+    {
+      "name": "Kültür",
+      "background": "assets/backgrounds/ask.jpg",
+      "checkpointQuestion": 3,
+      "questions": [
+        {
+          "question": "Gydnia mı daha güzel yoksa benim yanım mı?",
+          "options": ["Gydnia", "Benim yanım"],
+          "answer": 1
+        },
+        {
+          "question": "İlk gittiğimiz kafe hangisiydi?",
+          "options": ["Starbucks", "Vogs", "Kahve Dünyası", "Terminal Kadıköy"],
+          "answer": 1
+        },
+        {
+          "question": "Buluşma yerimiz neresi?",
+          "options": ["Kadıköy", "Pendik", "Bostancı", "Üsküdar"],
+          "answer": 0
+        },
+        {
+          "question": "Anıtkabir'e benimle gitmek ister misin?",
+          "options": ["Evet", "Hayır"],
+          "answer": 0
+        },
+        {
+          "question": "Sence ben kültürlü müyüm değil miyim?",
+          "options": ["Evet", "Hayır"],
+          "answer": 0
+        }
+      ],
+      "rewardImage": "assets/rewards/ask1.jpg",
+      "mapPosition": { "x": 320, "y": 80 }
+    },
+    {
+      "name": "Hayvanlar",
+      "background": "assets/backgrounds/hayvan.jpg",
+      "checkpointQuestion": 3,
+      "questions": [
+        {
+          "question": "Sence biz hangi hayvan çifitiyz?",
+          "options": ["Kedi", "Köpek", "Tavşan", "Aslan"],
+          "answer": 3
+        },
+        {
+          "question": "İlk birlikte gezdiğimiz hayvanat bahçesi nerdeydi?",
+          "options": ["İstanbul", "Gebze", "Bursa", "Şanlıurfa"],
+          "answer": 2
+        },
+        {
+          "question": "Sence o gezi güzel miydi?",
+          "options": ["Hayır", "Evet"],
+          "answer": 1
+        },
+        {
+          "question": "Benim sana hediye ettiğim şey neydi?",
+          "options": ["Kedi", "Tavşan", "Köpek", "Aslan"],
+          "answer": 1
+        },
+        {
+          "question": "Sence en tatlı hayvan hangisi?",
+          "options": ["Ben", "Köpek", "Tavşan", "Kedi"],
+          "answer": 0
+        }
+      ],
+      "rewardImage": "assets/rewards/hayvan1.jpg",
+      "mapPosition": { "x": 300, "y": 200 }
+    },
+    {
+      "name": "Biz",
+      "background": "assets/backgrounds/biz.jpg",
+      "checkpointQuestion": 3,
+      "questions": [
+        {
+          "question": "İlk buluşma tarihimiz ne?",
+          "options": ["12 Şubat 2023", "11 Ocak 2023", "19 Ocak 2023", "29 Ocak 2023"],
+          "answer": 3
+        },
+        {
+          "question": "Tanışma tarihimiz ne?",
+          "options": ["15 Aralık 2022", "14 Aralık 2022", "11 Aralık 2022", "16 Aralık 2022"],
+          "answer": 0
+        },
+        {
+          "question": "Yıldönümümüz ne?",
+          "options": ["12 Şubat 2023", "11 Şubat 2023", "19 Şubat 2023", "29 Şubat 2023"],
+          "answer": 0
+        },
+        {
+          "question": "Sence hangimiz diğerine daha çok aşık?",
+          "options": ["Ben sana", "Sen bana"],
+          "answer": 0
+        },
+        {
+          "question": "Bizi tek kelimeyle anlatmak istesen o kelime ne olurdu?",
+          "type": "open_ended",
+          "options": [],
+          "answer": "single_word"
+        }
+      ],
+      "rewardImage": "assets/rewards/biz.jpg",
+      "mapPosition": { "x": 300, "y": 200 }
+    },
+    {
+      "name": "Ben",
+      "background": "assets/backgrounds/ben.jpg",
+      "checkpointQuestion": 3,
+      "questions": [
+        {
+          "question": "Sence ben ne kadar komik mi?",
+          "options": ["En", "2.", "3.", "4."],
+          "answer": 0
+        },
+        {
+          "question": "Sence ben ne kadar tatlıyım?",
+          "options": ["Az", "Orta", "Çok", "En"],
+          "answer": 3
+        },
+        {
+          "question": "Sence ben ne kadar yakışıklıyım?",
+          "options": ["Az", "Çok", "Orta", "Biraz"],
+          "answer": 1
+        },
+        {
+          "question": "İyi ki var mıyım yoksa yok mu?",
+          "options": ["Yok", "Varsın"],
+          "answer": 1
+        },
+        {
+          "question": "Benle sevgili olduğun için mutlu musun?",
+          "options": ["Evet", "Hayır"],
+          "answer": 0
+        }
+      ],
+      "rewardImage": "assets/rewards/ben.jpg",
+      "mapPosition": { "x": 300, "y": 200 }
+    },
+    {
+      "name": "Temabes",
+      "background": "assets/temabes.jpg",
+      "type": "heart_game",
+      "checkpointQuestion": 1,
+      "questions": [],
+      "rewardImage": "assets/temabes.jpg",
+      "mapPosition": { "x": 300, "y": 200 }
+    },
+    {
+      "name": "Doğum Günü",
+      "background": "assets/backgrounds/ask.jpg",
+      "type": "birthday_game",
+      "checkpointQuestion": 1,
+      "questions": [],
+      "rewardImage": "assets/rewards/dg.jpg",
+      "mapPosition": { "x": 300, "y": 200 }
+    }
+  ]
+}

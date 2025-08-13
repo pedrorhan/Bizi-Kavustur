@@ -1,0 +1,1584 @@
+/* Reset ve Temel Stiller */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Ekran Yönetimi */
+.screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: all 0.3s ease-in-out;
+}
+
+.screen.active {
+    display: flex;
+}
+
+/* Giriş Ekranı */
+#startScreen {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+}
+
+.start-content {
+    max-width: 500px;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.start-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.start-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+/* Buton Stilleri */
+.btn-primary {
+    background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Navigasyon Butonları */
+.back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.main-menu-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(45deg, #4ecdc4, #44a08d);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.main-menu-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+    background: linear-gradient(45deg, #4ecdc4, #44a08d);
+    margin-top: 15px;
+}
+
+.start-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.save-info {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.save-info p {
+    margin: 8px 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Tema Ekranı */
+#themeScreen {
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.theme-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+/* Tema ekranındaki butonlar için özel stil */
+#themeScreen .back-btn {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin-right: 20px;
+}
+
+#themeScreen .main-menu-btn {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-left: 20px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4CAF50, #8BC34A);
+    width: 0%;
+    transition: width 0.2s ease;
+}
+
+.theme-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.theme-info h2 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+#questionCounter {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+/* Soru Kartı */
+.question-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 2rem;
+}
+
+.question-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.question-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.options-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.option-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 1rem;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.option-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.option-btn.correct {
+    background: linear-gradient(45deg, #4CAF50, #8BC34A);
+    border-color: #4CAF50;
+    animation: correctAnswer 0.4s ease;
+}
+
+.option-btn.incorrect {
+    background: linear-gradient(45deg, #f44336, #e91e63);
+    border-color: #f44336;
+    animation: incorrectAnswer 0.4s ease;
+}
+
+@keyframes correctAnswer {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes incorrectAnswer {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+}
+
+/* Açık Uçlu Sorular */
+.open-ended-container {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.input-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+#answerInput {
+    padding: 1rem 1.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1rem;
+    min-width: 300px;
+    backdrop-filter: blur(10px);
+    transition: all 0.2s ease;
+}
+
+#answerInput::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+#answerInput:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+#answerInput:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.hint-text {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    font-style: italic;
+    margin: 0;
+}
+
+/* Cevap Önizleme Alanı */
+.answer-preview {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+.answer-preview h4 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #FFD700;
+    opacity: 0.9;
+}
+
+.answer-display {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.8rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    min-height: 20px;
+}
+
+.answer-display span {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #4CAF50;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+#submitAnswerBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Geri Bildirim Overlay */
+.feedback-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.feedback-content {
+    text-align: center;
+    color: white;
+    padding: 2rem;
+}
+
+.feedback-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.feedback-icon.correct::before {
+    content: "✅";
+}
+
+.feedback-icon.incorrect::before {
+    content: "❌";
+}
+
+/* Ödül Ekranı */
+#rewardScreen {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.reward-container {
+    text-align: center;
+    max-width: 500px;
+    padding: 2rem;
+}
+
+.reward-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #FFD700;
+}
+
+.reward-image-container {
+    position: relative;
+    margin: 2rem 0;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.reward-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    filter: blur(10px);
+    transition: filter 2s ease;
+}
+
+.reward-image.revealed {
+    filter: blur(0);
+}
+
+.lock-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 2s ease;
+}
+
+.lock-overlay.unlocked {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.lock-icon {
+    font-size: 4rem;
+    animation: lockShake 0.3s ease-in-out;
+}
+
+@keyframes lockShake {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+}
+
+/* Harita Ekranı */
+#mapScreen {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.map-container {
+    text-align: center;
+    max-width: 800px;
+    padding: 2rem;
+}
+
+.map-container h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.map-wrapper {
+    position: relative;
+    margin: 2rem 0;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    cursor: grab;
+    user-select: none;
+    width: 100%;
+    height: 400px;
+}
+
+.map-wrapper:active {
+    cursor: grabbing;
+}
+
+.map-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.2s ease;
+    transform-origin: center;
+}
+
+.map-controls {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 20;
+}
+
+.zoom-btn {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+}
+
+.zoom-btn:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: scale(1.1);
+}
+
+.zoom-btn:active {
+    transform: scale(0.95);
+}
+
+.player-marker {
+    display: none; /* Karakter simgesi gizlendi */
+}
+
+.player-icon {
+    display: none; /* Oyuncu ikonu gizlendi */
+}
+
+@keyframes playerPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.map-info {
+    margin-top: 2rem;
+}
+
+.map-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Tema Seçim Menüsü */
+.theme-selection-menu {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.theme-selection-menu h4 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #FFD700;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.theme-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.theme-card {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.theme-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.theme-card.completed {
+    border-color: #4CAF50;
+    background: rgba(76, 175, 80, 0.2);
+}
+
+.theme-card.completed::before {
+    content: "✅";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    color: #4CAF50;
+}
+
+.theme-card.current {
+    border-color: #FFD700;
+    background: rgba(255, 215, 0, 0.2);
+    animation: currentThemePulse 2s infinite;
+}
+
+.theme-card.current::before {
+    content: "🎯";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    color: #FFD700;
+}
+
+@keyframes currentThemePulse {
+    0%, 100% { 
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    }
+    50% { 
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+    }
+}
+
+.theme-card h5 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: white;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.theme-card p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+    flex-grow: 1;
+}
+
+.theme-card .theme-status {
+    font-size: 0.8rem;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    display: inline-block;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.theme-card.completed .theme-status {
+    background: rgba(76, 175, 80, 0.4);
+    color: #4CAF50;
+    border: 1px solid rgba(76, 175, 80, 0.6);
+}
+
+.theme-card.current .theme-status {
+    background: rgba(255, 215, 0, 0.4);
+    color: #FFD700;
+    border: 1px solid rgba(255, 215, 0, 0.6);
+}
+
+.theme-card.locked .theme-status {
+    background: rgba(158, 158, 158, 0.4);
+    color: #9E9E9E;
+    border: 1px solid rgba(158, 158, 158, 0.6);
+}
+
+.theme-card.locked {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.theme-card.locked:hover {
+    transform: none;
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: none;
+}
+
+#closeThemeMenuBtn {
+    background: linear-gradient(45deg, #9e9e9e, #757575);
+    margin-top: 1rem;
+}
+
+/* Doğum Günü Oyunu Ekranı */
+#birthdayGameScreen {
+    background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+    color: white;
+}
+
+.birthday-game-container {
+    text-align: center;
+    max-width: 800px;
+    padding: 2rem;
+}
+
+.birthday-game-container h2 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    color: #FFD700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: birthdayGlow 2s ease-in-out infinite;
+}
+
+@keyframes birthdayGlow {
+    0%, 100% { 
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 215, 0, 0.5);
+    }
+    50% { 
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 215, 0, 0.8);
+    }
+}
+
+.birthday-question {
+    margin: 3rem 0;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.birthday-question h3 {
+    font-size: 2rem;
+    margin: 0;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    line-height: 1.4;
+}
+
+.birthday-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    margin: 3rem 0;
+    flex-wrap: wrap;
+}
+
+.birthday-btn {
+    padding: 2rem 4rem;
+    font-size: 2rem;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.yes-btn {
+    background: linear-gradient(45deg, #4CAF50, #8BC34A);
+    color: white;
+    transform: scale(1);
+}
+
+.yes-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+}
+
+.no-btn {
+    background: linear-gradient(45deg, #f44336, #e91e63);
+    color: white;
+    transform: scale(1);
+    transition: all 0.3s ease;
+}
+
+.no-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    animation: shake 0.2s ease-in-out;
+}
+
+.no-btn.escaping {
+    transition: all 0.1s ease;
+    animation: shake 0.1s ease-in-out infinite;
+}
+
+.birthday-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.birthday-btn:hover::before {
+    left: 100%;
+}
+
+.birthday-message {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    animation: messageAppear 1s ease-out;
+    text-align: center;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
+}
+
+.birthday-message.centered {
+    margin: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    animation: messageCenter 1.5s ease-out;
+}
+
+@keyframes messageCenter {
+    0% { 
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+    50% { 
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    100% { 
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes messageAppear {
+    0% { 
+        opacity: 0;
+        transform: translateY(30px) scale(0.8);
+    }
+    100% { 
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { 
+        transform: scale(1);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+    50% { 
+        transform: scale(1.05);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.birthday-message h3 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: #FFD700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.birthday-message p {
+    font-size: 1.3rem;
+    margin: 0;
+    color: white;
+    opacity: 0.9;
+}
+
+/* Final Ekranı */
+#finalScreen {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    overflow-y: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 100vh;
+    position: relative;
+}
+
+/* Kavuşma Giriş Ekranı */
+#kavusmaIntroScreen {
+    background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+    color: white;
+    text-align: center;
+}
+
+.kavusma-intro-container {
+    max-width: 700px;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.kavusma-intro-image {
+    margin-bottom: 2rem;
+}
+
+.kavusma-intro-img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    display: block; /* Resmin görünür olduğundan emin ol */
+}
+
+.kavusma-intro-img:hover {
+    transform: scale(1.05);
+}
+
+.kavusma-intro-loading {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.2rem;
+    color: #FFD700;
+    animation: pulse 2s infinite;
+}
+
+.kavusma-intro-message h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.kavusma-intro-message p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+/* Kavuşma Ekranı */
+#kavusmaScreen {
+    background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+    color: white;
+}
+
+.kavusma-container {
+    text-align: center;
+    max-width: 600px;
+    padding: 2rem;
+}
+
+.kavusma-card {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    margin: 2rem auto;
+    perspective: 1000px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+}
+
+.kavusma-card.flipped {
+    transform: rotateY(180deg);
+}
+
+.kavusma-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.kavusma-card.flipped .card-overlay {
+    opacity: 0;
+}
+
+.kavusma-card.flipped .kavusma-image {
+    transform: rotateY(180deg);
+}
+
+/* Kartın her iki yüzünü de düzgün göstermek için */
+.kavusma-card {
+    transform-style: preserve-3d;
+}
+
+.kavusma-image {
+    backface-visibility: hidden;
+    transform: rotateY(0deg);
+}
+
+.kavusma-card.flipped .kavusma-image {
+    transform: rotateY(180deg);
+}
+
+.flip-icon {
+    font-size: 4rem;
+    animation: heartBeat 1.5s infinite;
+}
+
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.kavusma-message {
+    margin-top: 2rem;
+}
+
+.kavusma-message h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #FFD700;
+}
+
+.kavusma-message p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.kavusma-hint {
+    font-size: 1rem !important;
+    opacity: 0.7 !important;
+    font-style: italic;
+    margin-top: 10px;
+    color: #FFD700;
+}
+
+/* Kalp Oyunu Ekranı */
+#heartGameScreen {
+    background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+    color: white;
+}
+
+.heart-game-container {
+    text-align: center;
+    max-width: 800px;
+    padding: 2rem;
+}
+
+.heart-game-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #FFD700;
+}
+
+.heart-game-container p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.heart-game-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 2rem auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.heart-game-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+}
+
+.heart-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+    background: rgba(255, 20, 147, 0.15);
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    font-size: 4rem;
+    color: #ff1493;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: all 0.3s ease;
+    animation: heartFloat 2s ease-in-out infinite;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+    z-index: 15;
+    filter: drop-shadow(0 0 10px rgba(255, 20, 147, 0.5));
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    padding: 8px;
+    backdrop-filter: blur(2px);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 20px rgba(255, 20, 147, 0.6);
+    min-width: 60px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.heart:hover {
+    transform: scale(1.3);
+    color: #ff69b4;
+    filter: drop-shadow(0 0 15px rgba(255, 20, 147, 0.8));
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.7);
+}
+
+.heart.clicked {
+    animation: heartDisappear 0.3s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes heartDisappear {
+    0% { 
+        transform: scale(1) rotate(0deg); 
+        opacity: 1;
+    }
+    25% { 
+        transform: scale(1.3) rotate(90deg); 
+        opacity: 0.8;
+    }
+    50% { 
+        transform: scale(1.6) rotate(180deg); 
+        opacity: 0.5;
+    }
+    75% { 
+        transform: scale(1.8) rotate(270deg); 
+        opacity: 0.2;
+    }
+    100% { 
+        transform: scale(0) rotate(360deg); 
+        opacity: 0;
+    }
+}
+
+.heart-game-info {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.heart-game-info p {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+#remainingHearts {
+    color: #FFD700;
+    font-weight: 700;
+}
+
+/* Final Ekranı */
+.final-container {
+    text-align: center;
+    max-width: 800px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    min-height: calc(100vh - 40px);
+}
+
+.final-container h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #FFD700;
+}
+
+.rewards-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.rewards-gallery img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease;
+}
+
+.rewards-gallery img:hover {
+    transform: scale(1.05);
+}
+
+.final-message {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.final-message h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #FFD700;
+}
+
+/* Tamamlanan Temalar Bölümü */
+.completed-themes-section {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.completed-themes-section h4 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #FFD700;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.completed-themes-section p {
+    font-size: 1.1rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+    color: white;
+}
+
+.completed-themes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.completed-theme-card {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.completed-theme-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.completed-theme-card::before {
+    content: "🔄";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.2rem;
+    color: #FFD700;
+    opacity: 0.8;
+}
+
+.completed-theme-card:hover::before {
+    content: "▶️";
+    color: #4CAF50;
+    transform: scale(1.2);
+    transition: all 0.3s ease;
+}
+
+.completed-theme-card h5 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: white;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.completed-theme-card p {
+    font-size: 0.8rem;
+    opacity: 0.9;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+    flex-grow: 1;
+}
+
+.completed-theme-card .theme-type {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    background: rgba(255, 215, 0, 0.3);
+    color: #FFD700;
+    display: inline-block;
+    font-weight: 600;
+    border: 1px solid rgba(255, 215, 0, 0.5);
+}
+
+/* Loading Ekranı */
+#loadingScreen {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.loading-content {
+    text-align: center;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+    .start-content h1 {
+        font-size: 2rem;
+    }
+    
+    .start-content p {
+        font-size: 1rem;
+    }
+    
+    .question-card {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    
+    .question-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    .options-container {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+    
+    .option-btn {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+        min-height: 50px;
+    }
+    
+    .input-group {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    #answerInput {
+        min-width: 250px;
+        padding: 0.8rem 1.2rem;
+    }
+    
+    .reward-image {
+        height: 200px;
+    }
+    
+    .map-image {
+        height: 300px;
+    }
+    
+    .player-icon {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .final-container h1 {
+        font-size: 2rem;
+    }
+    
+    .rewards-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+    
+    .rewards-gallery img {
+        height: 120px;
+    }
+    
+    .heart-game-container h2 {
+        font-size: 2rem;
+    }
+    
+    .heart-game-container p {
+        font-size: 1rem;
+    }
+    
+    .heart-game-image {
+        height: 300px;
+    }
+    
+    .heart {
+        font-size: 1.5rem;
+    }
+
+    .theme-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .theme-selection-menu {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+
+    .completed-themes-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+    
+    .completed-themes-section {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    
+    .completed-themes-section h4 {
+        font-size: 1.5rem;
+    }
+
+    .birthday-game-container h2 {
+        font-size: 2rem;
+    }
+    
+    .birthday-question h3 {
+        font-size: 1.5rem;
+    }
+    
+    .birthday-buttons {
+        gap: 2rem;
+        flex-direction: column;
+    }
+    
+    .birthday-btn {
+        padding: 1.5rem 3rem;
+        font-size: 1.5rem;
+    }
+    
+    .birthday-message h3 {
+        font-size: 1.8rem;
+    }
+    
+    .birthday-message p {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .start-content,
+    .reward-container,
+    .map-container,
+    .final-container {
+        padding: 1rem;
+    }
+    
+    .theme-header {
+        padding: 0.8rem;
+    }
+    
+    .theme-info h2 {
+        font-size: 1.2rem;
+    }
+    
+    .question-card {
+        padding: 1rem;
+    }
+    
+    .question-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    .option-btn {
+        padding: 0.6rem;
+        font-size: 0.8rem;
+        min-height: 45px;
+    }
+    
+    .input-group {
+        gap: 0.6rem;
+    }
+    
+    #answerInput {
+        min-width: 200px;
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .hint-text {
+        font-size: 0.8rem;
+    }
+} 

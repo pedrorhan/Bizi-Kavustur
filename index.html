@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İstanbul Macerası</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Giriş Ekranı -->
+    <div id="startScreen" class="screen active">
+        <div class="start-content">
+            <h1>Kavuşma Maceramız</h1>
+            <p>Her temayı tamamlayarak bizi kavuştur!!</p>
+            <div class="start-buttons">
+                <button id="newGameBtn" class="btn-primary">Yeni Oyun Başlat</button>
+                <button id="continueGameBtn" class="btn-primary btn-secondary" style="display: none;">Kaldığın Yerden Devam Et</button>
+            </div>
+            <div class="save-info" id="saveInfo" style="display: none;">
+                <p>📍 Son kaldığın yer: <span id="lastLocation"></span></p>
+                <p>🎯 Tamamlanan tema: <span id="completedCount"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tema Ekranı -->
+    <div id="themeScreen" class="screen">
+        <div class="theme-header">
+            <button class="back-btn" onclick="gameManager.goBack()">← Geri</button>
+            <button class="main-menu-btn" onclick="gameManager.goToMainMenu()">🏠 Ana Menü</button>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <div class="theme-info">
+                <h2 id="themeName"></h2>
+                <span id="questionCounter"></span>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <div class="question-card">
+                <h3 id="questionText"></h3>
+                
+                <!-- Çoktan seçmeli sorular için -->
+                <div class="options-container">
+                    <button class="option-btn" data-index="0"></button>
+                    <button class="option-btn" data-index="1"></button>
+                    <button class="option-btn" data-index="2"></button>
+                    <button class="option-btn" data-index="3"></button>
+                </div>
+                
+                <!-- Açık uçlu sorular için -->
+                <div id="openEndedContainer" class="open-ended-container" style="display: none;">
+                    <div class="input-group">
+                        <input type="text" id="answerInput" placeholder="Cevabınızı yazın..." maxlength="50">
+                        <button id="submitAnswerBtn" class="btn-primary" disabled>Gönder</button>
+                    </div>
+                    <p class="hint-text">💡 İpucu: Tek kelime yazın!</p>
+                    
+                    <!-- Yazılan cevabı gösteren alan -->
+                    <div id="answerPreview" class="answer-preview" style="display: none;">
+                        <h4>📝 Yazdığınız Cevap:</h4>
+                        <div class="answer-display">
+                            <span id="answerText"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="feedback-overlay" id="feedbackOverlay">
+            <div class="feedback-content">
+                <div class="feedback-icon"></div>
+                <h3 id="feedbackText"></h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ödül Ekranı -->
+    <div id="rewardScreen" class="screen">
+        <button class="back-btn" onclick="gameManager.goBack()">← Geri</button>
+        <button class="main-menu-btn" onclick="gameManager.goToMainMenu()">🏠 Ana Menü</button>
+        <div class="reward-container">
+            <h2>Tebrikler!</h2>
+            <p>Temayı başarıyla tamamladın!</p>
+            <div class="reward-image-container">
+                <img id="rewardImage" class="reward-image" src="" alt="Ödül">
+                <div class="lock-overlay">
+                    <div class="lock-icon">🔒</div>
+                </div>
+            </div>
+            <button id="continueBtn" class="btn-primary">Devam Et</button>
+        </div>
+    </div>
+
+    <!-- Harita Ekranı -->
+    <div id="mapScreen" class="screen">
+        <button class="back-btn" onclick="gameManager.goBack()">← Geri</button>
+        <button class="main-menu-btn" onclick="gameManager.goToMainMenu()">🏠 Ana Menü</button>
+        <div class="map-container">
+            <h2>İstanbul Haritası</h2>
+            <div class="map-wrapper" id="mapWrapper">
+                <img id="mapImage" class="map-image" src="" alt="İstanbul Haritası">
+                <div id="playerMarker" class="player-marker">
+                    <img id="playerIcon" class="player-icon" src="" alt="Oyuncu">
+                </div>
+                <div class="map-controls">
+                    <button class="zoom-btn" id="zoomInBtn">+</button>
+                    <button class="zoom-btn" id="zoomOutBtn">−</button>
+                    <button class="zoom-btn" id="resetZoomBtn">⟲</button>
+                </div>
+            </div>
+            <div class="map-info">
+                <h3 id="nextThemeName"></h3>
+                <p id="nextThemeDescription"></p>
+                <button id="startThemeBtn" class="btn-primary">Temayı Başlat</button>
+                
+                <!-- Tema Seçim Menüsü -->
+                <div class="theme-selection-menu" id="themeSelectionMenu" style="display: none;">
+                    <h4>🎯 Tema Seç</h4>
+                    <div class="theme-grid" id="themeGrid">
+                        <!-- Temalar dinamik olarak eklenecek -->
+                    </div>
+                    <button id="closeThemeMenuBtn" class="btn-secondary">Kapat</button>
+                </div>
+                
+                <!-- Tema Menüsü Açma Butonu -->
+                <button id="openThemeMenuBtn" class="btn-secondary" style="margin-top: 15px;">📚 Tema Menüsü</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Final Ekranı -->
+    <div id="finalScreen" class="screen">
+        <button class="back-btn" onclick="gameManager.goBack()">← Geri</button>
+        <button class="main-menu-btn" onclick="gameManager.goToMainMenu()">🏠 Ana Menü</button>
+        <div class="final-container">
+            <h1>🎉 Tebrikler! 🎉</h1>
+            <p>Tüm temaları başarıyla tamamladın!</p>
+            <div class="rewards-gallery" id="rewardsGallery">
+                <!-- Ödül fotoğrafları buraya dinamik olarak eklenecek -->
+            </div>
+            <div class="final-message">
+                <h3>Bizi kavuşturdun!</h3>
+                <p>Her anı özel kılan seninle geçirdiğim her gün için teşekkür ederim...</p>
+            </div>
+            
+            <!-- Tema Kartları -->
+            <div class="completed-themes-section">
+                <h4>🎯 Tamamlanan Temalar</h4>
+                <p>İstediğin temaya tıklayarak tekrar oynayabilirsin!</p>
+                <div class="completed-themes-grid" id="completedThemesGrid">
+                    <!-- Tema kartları dinamik olarak eklenecek -->
+                </div>
+            </div>
+            
+            <button id="kavusmaBtn" class="btn-primary">Kavuştuk! 💕</button>
+        </div>
+    </div>
+
+    <!-- Kavuşma Giriş Ekranı -->
+    <div id="kavusmaIntroScreen" class="screen">
+        <button class="back-btn" onclick="gameManager.goBack()">← Geri</button>
+        <button class="main-menu-btn" onclick="gameManager.goToMainMenu()">🏠 Ana Menü</button>
+        <div class="kavusma-intro-container">
+            <div class="kavusma-intro-image">
+                <div id="kavusmaIntroLoading" class="kavusma-intro-loading">🔄 Yükleniyor...</div>
+                <img id="kavusmaIntroImage" src="" alt="Kavuşma" class="kavusma-intro-img" style="display: none;">
+            </div>
+            <div class="kavusma-intro-message">
+                <h2>💕 Özel Ödül 💕</h2>
+                <p>Özel ödülü görmek için tıklayın!</p>
+                <button id="showKavusmaBtn" class="btn-primary">Özel Ödülü Gör</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Kavuşma Ekranı -->
+    <div id="kavusmaScreen" class="screen">
+        <button class="back-btn" onclick="gameManager.goBack()">← Geri</button>
+        <button class="main-menu-btn" onclick="gameManager.goToMainMenu()">🏠 Ana Menü</button>
+        <div class="kavusma-container">
+            <div class="kavusma-card" id="kavusmaCard">
+                <img id="kavusmaImage" class="kavusma-image" src="" alt="Kavuşma">
+                <div class="card-overlay">
+                    <div class="flip-icon">💕</div>
+                </div>
+            </div>
+            <div class="kavusma-message">
+                <h2>Kavuştuk! 💕</h2>
+                <p>Kartı çevirmek için tıklayın</p>
+                <p class="kavusma-hint">💡 Kartı tekrar tıklayarak eski haline döndürebilirsiniz</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Kalp Oyunu Ekranı -->
+    <div id="heartGameScreen" class="screen">
+        <button class="back-btn" onclick="gameManager.goBack()">← Geri</button>
+        <button class="main-menu-btn" onclick="gameManager.goToMainMenu()">🏠 Ana Menü</button>
+        <div class="heart-game-container">
+            <h2>💕 Kalplerle Kaplı Fotoğraf 💕</h2>
+            <p>Fotoğrafı görmek için kalplere tıklayın!</p>
+            <div class="heart-game-wrapper">
+                <div class="heart-overlay" id="heartOverlay">
+                    <!-- Kalpler dinamik olarak eklenecek -->
+                </div>
+                <img id="heartGameImage" class="heart-game-image" src="assets/temabes.jpg" alt="Temabes">
+            </div>
+            <div class="heart-game-info">
+                <p>Kalan kalp: <span id="remainingHearts">25</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Doğum Günü Oyunu Ekranı -->
+    <div id="birthdayGameScreen" class="screen">
+        <button class="back-btn" onclick="gameManager.goBack()">← Geri</button>
+        <button class="main-menu-btn" onclick="gameManager.goToMainMenu()">🏠 Ana Menü</button>
+        <div class="birthday-game-container">
+            <h2>🎂 Doğum Günü Hediyesi 🎂</h2>
+            <div class="birthday-question">
+                <h3>Ben senin en güzel doğum günü hediyen miyim?</h3>
+            </div>
+            <div class="birthday-buttons">
+                <button id="yesButton" class="birthday-btn yes-btn">Evet</button>
+                <button id="noButton" class="birthday-btn no-btn">Hayır</button>
+            </div>
+            <div class="birthday-message" id="birthdayMessage" style="display: none;">
+                <h3>💕 Bu cevabı vereceğini biliyordum! 💕</h3>
+                <p>Sen benim en değerli hediyemsin!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Ekranı -->
+    <div id="loadingScreen" class="screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p>Yükleniyor...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Global gameManager değişkeni
+        let gameManager;
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            gameManager = new GameManager();
+        });
+    </script>
+</body>
+</html> 
